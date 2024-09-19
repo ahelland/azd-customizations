@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BFF_Web_App.Client\BFF_Web_App.Client.csproj" />
+    <ProjectReference Include="..\BFF_Web_App.ServiceDefaults\BFF_Web_App.ServiceDefaults.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" />
+	  <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
+	  <PackageReference Include="Microsoft.Extensions.Hosting" />
+	  <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
+	  <PackageReference Include="Microsoft.Extensions.ServiceDiscovery.Yarp"/>
+	  <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" />
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons"/>
+	  <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect"/>
+  </ItemGroup>
+</Project>
