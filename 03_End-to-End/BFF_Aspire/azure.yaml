@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: BFF_Aspire
+hooks:
+  preprovision:
+    - shell: pwsh
+      run: az stack sub create --name azd-level-2 --location westeurope --template-file .\infra\level-2\main.bicep --parameters .\infra\level-2\main.bicepparam --action-on-unmanage 'deleteAll' --deny-settings-mode none
+  postprovision:
+    - shell: pwsh
+      run: az stack sub create --name azd-devCenter --location westeurope --template-file .\infra\devCenter\main.bicep --parameters .\infra\devCenter\main.bicepparam --action-on-unmanage 'deleteAll' --deny-settings-mode none
+  postdown:
+    - shell: pwsh
+      run: az stack sub delete --name azd-devCenter --action-on-unmanage deleteAll --yes
+    - shell: pwsh
+      run: az stack sub delete --name azd-level-2 --action-on-unmanage deleteAll --yes
+
+services:  
+  app:
+    language: dotnet
+    project: ./BFF_Web_App.AppHost/BFF_Web_App.AppHost.csproj
+    host: containerapp
