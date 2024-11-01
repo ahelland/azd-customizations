@@ -1,4 +1,4 @@
-extension microsoftGraph
+extension microsoftGraphV1_0
 
 param keyVaultName string
 
